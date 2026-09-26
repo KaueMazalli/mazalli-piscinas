@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Dashboard | Mazalli Piscinas
+</title>
+
+
+<link rel="stylesheet" href="dashboard.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+</head>
+
+
+<body>
+
+
+<header class="dashboard-header">
+
+<h1>
+Mazalli Piscinas
+</h1>
+
+<p>
+Gerenciar galeria de projetos
+</p>
+
+</header>
+
+
+
+<main>
+
+
+<section class="panel">
+
+
+<h2>
+Adicionar piscina
+</h2>
+
+
+
+<label>
+Imagem da piscina
+</label>
+
+<input
+type="file"
+id="imagem"
+accept="image/*"
+>
+
+
+
+<div id="preview"></div>
+
+
+
+<label>
+Nome do projeto
+</label>
+
+<input
+type="text"
+id="titulo"
+placeholder="Ex: Piscina residencial"
+>
+
+
+
+<label>
+Descrição
+</label>
+
+<textarea
+id="descricao"
+placeholder="Ex: Projeto realizado em Santa Albertina"
+></textarea>
+
+
+
+<button id="addProjeto">
+
+Adicionar projeto
+
+</button>
+
+
+
+<p id="status"></p>
+
+
+</section>
+
+
+
+
+
+<section class="lista">
+
+
+<h2>
+Projetos cadastrados
+</h2>
+
+
+<div id="projetos">
+
+</div>
+
+
+</section>
+
+
+
+</main>
+
+
+
+<script src="dashboard.js"></script>
+
+
+</body>
+
+</html>
