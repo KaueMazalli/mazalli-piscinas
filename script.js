@@ -464,3 +464,4 @@ loading="lazy"
 
 
 carregarProjetosHome();
+// Deploy Cloudflare
