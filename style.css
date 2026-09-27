@@ -1571,3 +1571,39 @@ z-index:1001;
 
 
 }
+
+/* =========================================================
+   ESTADOS E ACESSIBILIDADE
+========================================================= */
+
+.projects-state {
+    grid-column: 1 / -1;
+    padding: 30px 0;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.7;
+}
+
+.projects-state-error {
+    color: var(--blue-dark);
+}
+
+:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
