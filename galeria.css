@@ -823,3 +823,30 @@ padding:0 18px;
 
 
 }
+
+/* =====================================================
+   ESTADOS DA GALERIA
+===================================================== */
+
+.gallery-grid > p {
+    grid-column: 1 / -1;
+    padding: 30px 0;
+    color: #687783;
+    text-align: center;
+    line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-card,
+    .gallery-card img {
+        transition: none;
+    }
+
+    .gallery-card:hover {
+        transform: none;
+    }
+
+    .gallery-card:hover img {
+        transform: none;
+    }
+}
