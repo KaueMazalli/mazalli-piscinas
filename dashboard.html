@@ -1,136 +1,68 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>
-Dashboard | Mazalli Piscinas
-</title>
-
-
+<title>Painel | Mazalli Piscinas</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="dashboard.css">
-
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
 </head>
 
-
 <body>
-
-
 <header class="dashboard-header">
-
-<h1>
-Mazalli Piscinas
-</h1>
-
-<p>
-Gerenciar galeria de projetos
-</p>
-
+<div>
+<h1>Mazalli Piscinas</h1>
+<p>Gerenciar galeria de projetos</p>
+</div>
+<button id="logoutButton" class="logout-button" type="button" hidden>Sair</button>
 </header>
 
-
-
 <main>
+<section id="loginPanel" class="panel login-panel" aria-labelledby="loginTitle">
+<h2 id="loginTitle">Acesso administrativo</h2>
+<p class="panel-description">Entre com a conta autorizada para gerenciar os projetos.</p>
 
+<form id="loginForm">
+<label for="email">E-mail</label>
+<input type="email" id="email" autocomplete="username" required>
 
+<label for="password">Senha</label>
+<input type="password" id="password" autocomplete="current-password" required>
+
+<button type="submit">Entrar</button>
+<p id="loginStatus" class="status" role="alert" aria-live="polite"></p>
+</form>
+</section>
+
+<section id="dashboardContent" class="dashboard-content" hidden>
 <section class="panel">
+<h2>Adicionar piscina</h2>
 
-
-<h2>
-Adicionar piscina
-</h2>
-
-
-
-<label>
-Imagem da piscina
-</label>
-
-<input
-type="file"
-id="imagem"
-accept="image/*"
->
-
-
+<label for="imagem">Imagem da piscina</label>
+<input type="file" id="imagem" accept="image/jpeg,image/png,image/webp" required>
 
 <div id="preview"></div>
 
+<label for="titulo">Nome do projeto</label>
+<input type="text" id="titulo" maxlength="120" placeholder="Ex: Piscina residencial" required>
 
+<label for="descricao">Descrição</label>
+<textarea id="descricao" maxlength="500" placeholder="Ex: Projeto realizado em Santa Albertina"></textarea>
 
-<label>
-Nome do projeto
-</label>
-
-<input
-type="text"
-id="titulo"
-placeholder="Ex: Piscina residencial"
->
-
-
-
-<label>
-Descrição
-</label>
-
-<textarea
-id="descricao"
-placeholder="Ex: Projeto realizado em Santa Albertina"
-></textarea>
-
-
-
-<button id="addProjeto">
-
-Adicionar projeto
-
-</button>
-
-
-
-<p id="status"></p>
-
-
+<button id="addProjeto" type="button">Adicionar projeto</button>
+<p id="status" class="status" role="status" aria-live="polite"></p>
 </section>
-
-
-
-
 
 <section class="lista">
-
-
-<h2>
-Projetos cadastrados
-</h2>
-
-
+<h2>Projetos cadastrados</h2>
 <div id="projetos">
-
+<p role="status">Carregando...</p>
 </div>
-
-
 </section>
-
-
-
+</section>
 </main>
 
-
-
 <script src="dashboard.js"></script>
-
-
 </body>
-
 </html>
