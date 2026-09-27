@@ -7,8 +7,12 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="dashboard.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+    #dashboardContent { display: none !important; }
+    #dashboardContent.is-authenticated { display: grid !important; }
+    #loginPanel.is-hidden { display: none !important; }
+</style>
 </head>
-
 <body>
 <header class="dashboard-header">
 <div>
@@ -35,7 +39,7 @@
 </form>
 </section>
 
-<section id="dashboardContent" class="dashboard-content" hidden>
+<section id="dashboardContent" aria-hidden="true">
 <section class="panel">
 <h2>Adicionar piscina</h2>
 
