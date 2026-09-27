@@ -112,10 +112,12 @@ logoutButton.addEventListener("click", async () => {
     showLogin();
 });
 
-supabaseClient.auth.onAuthStateChange((_event, session) => {
-    if (session) {
+supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_IN" && session) {
         showDashboard();
-    } else {
+    }
+
+    if (event === "SIGNED_OUT") {
         showLogin();
     }
 });
@@ -218,7 +220,12 @@ addButton.addEventListener("click", async () => {
     }
 });
 
+let carregandoProjetos = false;
+
 async function carregarProjetos() {
+    if (carregandoProjetos) return;
+
+    carregandoProjetos = true;
     projetosDiv.innerHTML = "<p role=\"status\">Carregando...</p>";
 
     const { data, error } = await supabaseClient
@@ -227,13 +234,15 @@ async function carregarProjetos() {
         .order("created_at", { ascending: false });
 
     if (error) {
-        console.error(error);
-        projetosDiv.innerHTML = "<p role=\"alert\">Erro ao carregar projetos.</p>";
+        console.error("Erro ao carregar projetos:", error);
+        projetosDiv.innerHTML = `<p role="alert">Erro ao carregar projetos: ${escapeHTML(error.message || "erro desconhecido")}.</p>`;
+        carregandoProjetos = false;
         return;
     }
 
     if (!data?.length) {
         projetosDiv.innerHTML = "<p role=\"status\">Nenhum projeto cadastrado.</p>";
+        carregandoProjetos = false;
         return;
     }
 
@@ -256,6 +265,8 @@ async function carregarProjetos() {
             </article>
         `;
     }).join("");
+
+    carregandoProjetos = false;
 }
 
 projetosDiv.addEventListener("click", async (event) => {
