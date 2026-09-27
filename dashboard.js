@@ -40,19 +40,23 @@ function setStatus(element, message, isError = false) {
 }
 
 function showDashboard() {
-    loginPanel.hidden = true;
-    dashboardContent.hidden = false;
+    loginPanel.classList.add("is-hidden");
+    dashboardContent.classList.add("is-authenticated");
+    dashboardContent.setAttribute("aria-hidden", "false");
     logoutButton.hidden = false;
     carregarProjetos();
 }
 
 function showLogin() {
-    loginPanel.hidden = false;
-    dashboardContent.hidden = true;
+    loginPanel.classList.remove("is-hidden");
+    dashboardContent.classList.remove("is-authenticated");
+    dashboardContent.setAttribute("aria-hidden", "true");
     logoutButton.hidden = true;
 }
 
 async function iniciar() {
+    showLogin();
+
     const { data, error } = await supabaseClient.auth.getSession();
 
     if (error) {
