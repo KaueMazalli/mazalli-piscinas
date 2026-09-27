@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mazallipiscinas.pages.dev/sitemap.xml
